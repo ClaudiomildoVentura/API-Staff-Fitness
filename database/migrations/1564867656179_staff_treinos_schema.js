@@ -4,12 +4,12 @@
 const Schema = use('Schema')
 
 class TreinosSchema extends Schema {
-  up () {
+  up() {
     this.create('treinos', (table) => {
       table.increments()
       table.timestamps()
-      table.integer('idPersonal',11).notNullable().references('id').inTable('users')  
-      table.integer('idAluno',11).notNullable().references('id').inTable('users')
+      table.integer('idPersonal', 11).notNullable().references('id').inTable('users')
+      table.integer('idAluno', 11).notNullable().references('id').inTable('users')
       table.string('nomeExercicio').notNullable()
       table.string('categoria').notNullable()
       table.string('equipamento').notNullable()
@@ -18,15 +18,14 @@ class TreinosSchema extends Schema {
       table.integer('series').notNullable()
       table.integer('intervalo').notNullable()
       table.string('observacoes')
-      table.date('dataexercicio').notNullable() 
-      table.time('horainicio').notNullable()           
-      table.time('horafim').notNullable()           
+      table.date('dataexercicio').notNullable()
+      table.time('horainicio').notNullable()
+      table.time('horafim').notNullable()
     })
   }
 
-  down () {
+  down() {
     this.drop('treinos')
   }
 }
-
 module.exports = TreinosSchema
