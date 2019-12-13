@@ -4,12 +4,11 @@
 const Model = use('Model')
 
 class Payment extends Model {
-    staff (){
+    staff() {
         return this.hasMany('App/Models/User', 'id', 'idPPersonal')
     }
-    plan (){
+    plan() {
         return this.hasMany('App/Models/Staff/Plans', 'id', 'idPlan')
     }
 }
-
 module.exports = Payment

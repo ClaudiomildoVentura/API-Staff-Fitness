@@ -4,12 +4,11 @@
 const Model = use('Model')
 
 class Imc extends Model {
-    alunoIMC(){
+    alunoIMC() {
         return this.hasMany('App/Models/User')
     }
-    staffIMC(){
+    staffIMC() {
         return this.hasMany('App/Models/User')
     }
 }
-
 module.exports = Imc

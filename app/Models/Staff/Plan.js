@@ -4,9 +4,8 @@
 const Model = use('Model')
 
 class Plan extends Model {
-    staffs (){
+    staffs() {
         return this.hasMany('App/Models/User')
     }
 }
-
 module.exports = Plan
