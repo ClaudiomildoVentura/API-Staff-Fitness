@@ -7,5 +7,4 @@ class StudentsLogin {
     }
   }
 }
-
 module.exports = StudentsLogin
