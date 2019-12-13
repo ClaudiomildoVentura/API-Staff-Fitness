@@ -15,7 +15,7 @@ const Server = use('Server')
 const globalMiddleware = [
   'Adonis/Middleware/BodyParser',
   'App/Middleware/ConvertEmptyStringsToNull',
-  'Adonis/Middleware/Session'  
+  'Adonis/Middleware/Session'
 ]
 
 /*
@@ -51,7 +51,6 @@ const namedMiddleware = {
 |
 */
 const serverMiddleware = [
-  // 'Adonis/Middleware/Static',
   'Adonis/Middleware/Cors'
 ]
 
