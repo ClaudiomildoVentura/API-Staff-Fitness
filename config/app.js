@@ -30,7 +30,7 @@ module.exports = {
   | to encrypt cookies, sessions and other sensitive data.
   |
   */
-  appKey: Env.getOrFail('APP_KEY','DATABASE_URL.APP_KEY'),
+  appKey: Env.getOrFail('APP_KEY', 'DATABASE_URL.APP_KEY'),
 
   http: {
     /*
@@ -110,7 +110,7 @@ module.exports = {
     | production to optimize view loading time.
     |
     */
-    cache: Env.get('CACHE_VIEWS', 'DATABASE_URL.CACHE_VIEWS')    
+    cache: Env.get('CACHE_VIEWS', 'DATABASE_URL.CACHE_VIEWS')
 
   },
 

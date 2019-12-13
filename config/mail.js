@@ -25,14 +25,14 @@ module.exports = {
   |
   */
   smtp: {
-    driver: Env.get('SMTP_DRIVER','DATABASE_URL.SMTP_DRIVER'),
-    pool: Env.get('SMTP_POOL','DATABASE_URL.SMTP_POOL'),
-    port: Env.get('SMTP_PORT','DATABASE_URL.SMTP_PORT'),
-    host: Env.get('SMTP_HOST','DATABASE_URL.SMTP_HOST'),
-    secure: Env.get('SMTP_SECURE','DATABASE_URL.SMTP_SECURE'),
+    driver: Env.get('SMTP_DRIVER', 'DATABASE_URL.SMTP_DRIVER'),
+    pool: Env.get('SMTP_POOL', 'DATABASE_URL.SMTP_POOL'),
+    port: Env.get('SMTP_PORT', 'DATABASE_URL.SMTP_PORT'),
+    host: Env.get('SMTP_HOST', 'DATABASE_URL.SMTP_HOST'),
+    secure: Env.get('SMTP_SECURE', 'DATABASE_URL.SMTP_SECURE'),
     auth: {
-      user: Env.get('MAIL_USERNAME','DATABASE_URL.MAIL_USERNAME'),
-      pass: Env.get('MAIL_PASSWORD','DATABASE_URL.MAIL_PASSWORD')
+      user: Env.get('MAIL_USERNAME', 'DATABASE_URL.MAIL_USERNAME'),
+      pass: Env.get('MAIL_PASSWORD', 'DATABASE_URL.MAIL_PASSWORD')
     },
     maxConnections: 5,
     maxMessages: 100,
