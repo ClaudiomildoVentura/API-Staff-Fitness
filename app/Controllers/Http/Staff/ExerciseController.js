@@ -15,11 +15,9 @@ class ExerciseController {
                     .where({ 'alunosstaffs.idPersonal': staff.id, 'alunosstaffs.status': 0 })
                 return response.send({ treinos })
             }
-            //          return alunos
         } catch (error) {
             return response.send({ "message": error.message })
         }
     }
 }
-
 module.exports = ExerciseController

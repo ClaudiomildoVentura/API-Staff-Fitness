@@ -2,7 +2,6 @@
 const User = use('App/Models/User')
 const { validate } = use('Validator')
 const Register = use('App/Validators/Staff/Registration')
-//const Mail = use('App/Controllers/Http/Main/SendMailController')
 const Mail = use('Mail')
 const Helpers = use('Helpers')
 class RegistrationController {
@@ -16,13 +15,6 @@ class RegistrationController {
     const telefone = request.input("telefone")
     const cref = request.input("cref")
 
-    /*    const validation = await validate(request.all(), validation.rules())
-        if (validation.fails()) {
-          session
-            .withErrors(validation.messages())
-            .flashExcept(['password'])
-          return response.json({message: "A validação falhou"})
-        }    */
     let user = new User()
     user.username = username
     user.email = email
@@ -34,15 +26,6 @@ class RegistrationController {
     user.cref = cref
     user.status = 1
     user.accesslevel = 2
-    /*    user = await user.save()
-        const newuser = await User.findBy("email", email)
-        let activeuser = {user: newuser, token: await auth.generate(newuser) }          
-        await Mail.send('mail.welcomemail', {activeuser}, (message) => {
-          message
-          .to(activeuser.user.email)
-          .from(email)
-          .subject("Bem-vindo ao StaffFitness")
-        })       */
     return response.json({ "status": 0, "message": "Usuário criado com sucesso " + user.nome + "! Um e-mail de verificação foi enviado para seu email " + user.email })
   }
 
@@ -76,8 +59,8 @@ class RegistrationController {
       let activeuser = { user: newuser, token: await auth.generate(newuser) }
       await Mail.send('mail.welcomemail', { activeuser }, (message) => {
         message
-        .embed(Helpers.publicPath('staffNovo.png'), 'logo')
-        .embed(Helpers.resourcesPath('assets/imgs/background.jpg'), 'background')
+          .embed(Helpers.publicPath('staffNovo.png'), 'logo')
+          .embed(Helpers.resourcesPath('assets/imgs/background.jpg'), 'background')
           .to(activeuser.user.email)
           .from('email')
           .subject("Bem-vindo ao StaffFitness")
@@ -100,9 +83,5 @@ class RegistrationController {
     )
     return response.json({ status: 0, message: "E-mail enviado com sucesso" })
   }
-
-
-
 }
-
 module.exports = RegistrationController

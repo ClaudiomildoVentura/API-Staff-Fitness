@@ -19,42 +19,42 @@ class EquipamentoController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
-      const equipamento = await Equipamento.query()
+  async index({ request, response, view }) {
+    const equipamento = await Equipamento.query()
       .orderBy('categoriaEquipamento')
       .orderBy('nomeEquipamento')
       .orderBy('nomeExercicio')
       .fetch()
-      return response.json({"equipamento": equipamento})
+    return response.json({ "equipamento": equipamento })
   }
 
-  async indexCategoria({response}){
-    try{
+  async indexCategoria({ response }) {
+    try {
       const categoria = await Equipamento
-      .query()
-      .distinct('categoriaEquipamento')
-      .fetch()
-        return response.json({'categoria': categoria})
-    }catch(error){
-       return {'message':error.message} 
+        .query()
+        .distinct('categoriaEquipamento')
+        .fetch()
+      return response.json({ 'categoria': categoria })
+    } catch (error) {
+      return { 'message': error.message }
     }
   }
 
-  async indexEquipamento({params}){
+  async indexEquipamento({ params }) {
     const categoria = params.categoriaEquipamento
-    try{
-        const categoria = await Equipamento
+    try {
+      const categoria = await Equipamento
         .query()
-        .where('categoriaEquipamento',categoria)
+        .where('categoriaEquipamento', categoria)
         .distinct('categoriaEquipamento')
         .fetch()
-        const equipamento = await Database
+      const equipamento = await Database
         .table('equipamentos')
         .where('categoriaEquipamento', categoria)
         .distinct('nomeEquipamento')
-        return response.send({equipamento, categoria})  
-    }catch(error){
-       return response.json({'message':error.message}) 
+      return response.send({ equipamento, categoria })
+    } catch (error) {
+      return response.json({ 'message': error.message })
     }
   }
 
@@ -67,7 +67,7 @@ class EquipamentoController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create ({ request, response, view }) {
+  async create({ request, response, view }) {
   }
 
   /**
@@ -78,7 +78,7 @@ class EquipamentoController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store({ request, response }) {
   }
 
   /**
@@ -90,7 +90,7 @@ class EquipamentoController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show({ params, request, response, view }) {
   }
 
   /**
@@ -102,7 +102,7 @@ class EquipamentoController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async edit ({ params, request, response, view }) {
+  async edit({ params, request, response, view }) {
   }
 
   /**
@@ -113,7 +113,7 @@ class EquipamentoController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update({ params, request, response }) {
   }
 
   /**
@@ -124,8 +124,7 @@ class EquipamentoController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy({ params, request, response }) {
   }
 }
-
 module.exports = EquipamentoController

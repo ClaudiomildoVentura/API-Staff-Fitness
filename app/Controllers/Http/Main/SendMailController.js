@@ -1,7 +1,6 @@
 'use strict'
 const Mail = use('Mail')
 const Env = use('Env')
-//const email = Env.get('MAIL_USERNAME', 'DATABASE_URL.MAIL_USERNAME')
 const Helpers = use('Helpers')
 
 const User = use('App/Models/User')
@@ -46,13 +45,12 @@ class SendMailController {
         let activeuser = { user: 'leonardobelas', token: 'powerrangers' }
         await Mail.send('mail.welcomemail', { activeuser }, (message) => {
             message
-            .embed(Helpers.publicPath('staffNovo.png'), 'logo')
-            .embed(Helpers.resourcesPath('assets/imgs/background.jpg'), 'background')
-            .to(lemail)
+                .embed(Helpers.publicPath('staffNovo.png'), 'logo')
+                .embed(Helpers.resourcesPath('assets/imgs/background.jpg'), 'background')
+                .to(lemail)
                 .subject("Bem-vindo ao StaffFitness")
         })
     }
 
 }
-
 module.exports = SendMailController

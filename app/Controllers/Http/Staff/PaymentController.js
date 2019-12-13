@@ -1,15 +1,16 @@
 'use strict'
 const Payments = use('App/Models/Staff/Payment')
-const moment = require("moment");
+const moment = require("moment")
+
 class PaymentController {
-    async store({request, response, auth}){
-        try{
+    async store({ request, response, auth }) {
+        try {
             const authentication = await auth.check()
-            if(authentication){
-                const user = await auth.getUser()                
+            if (authentication) {
+                const user = await auth.getUser()
                 const content = request.all()
                 const moments = moment(content.lastEventDate)
-                const expirationDate = moments.add(33, 'days').calendar() 
+                const expirationDate = moments.add(33, 'days').calendar()
                 const amount = content.items.amount
                 const method = content.method
                 const paymentLink = content.paymentLink
@@ -27,12 +28,11 @@ class PaymentController {
                 payment.pagseguroCode = pagseguroCode
                 payment.expirationDate = expirationDate
                 await payment.save()
-                return response.json({'Resposta da request da api':'Resposta da request da api', content, payment})                
+                return response.json({ 'Resposta da request da api': 'Resposta da request da api', content, payment })
             }
-        }catch(erro){
-            return response.json({'message': erro.message})
+        } catch (erro) {
+            return response.json({ 'message': erro.message })
         }
-    }    
+    }
 }
-
 module.exports = PaymentController
